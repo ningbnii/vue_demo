@@ -22,6 +22,9 @@ export default new Router({
         {
             path: '/user',
             component: Pages.userHome,
+            meta:{
+                requiresAuth:true,
+            },
             children: [
                 {
                     path:'/user/profile',
