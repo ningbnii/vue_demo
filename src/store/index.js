@@ -17,7 +17,9 @@ export default new Vuex.Store({
     actions,
     mutations,
     modules,
-    plugins:[persistedState()],
+    plugins:[persistedState({
+        storage: window.sessionStorage
+    })],
     strict:debug,
 })
 
