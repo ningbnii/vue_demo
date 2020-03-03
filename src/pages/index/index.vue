@@ -10,9 +10,7 @@
     <p>
       <van-button type="danger" @click="goToChangePwd()">go to changePwd</van-button>
     </p>
-    <van-button type="default" :loading="false" @click="goToLogin">
-      去登陆
-    </van-button>
+    <van-button type="default" :loading="false" @click="goToLogin">去登陆</van-button>
   </div>
 </template>
 
@@ -27,8 +25,8 @@ export default {
     goToChangePwd() {
       this.$router.push({ name: "changePwd" });
     },
-    goToLogin(){
-      this.$router.push({name:'login'})
+    goToLogin() {
+      this.$router.push({ name: "login" });
     },
     test() {
       // let params = {
