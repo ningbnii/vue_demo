@@ -8,14 +8,19 @@ Vue.config.productionTip = false;
 Vue.use(Button);
 
 router.beforeEach((to, from, next) => {
-    if (!store.state.userToken) {
-        if (to.matched.length > 0 && !to.matched.some(record => record.meta.requiresAuth)) {
+    console.log(to.matched.some(record => record.meta.requiresAuth))
+    if (to.matched.length > 0 && to.matched.some(record => record.meta.requiresAuth)) {
+        if (store.state.userToken) {
             next()
         } else {
-            next({name: 'login'})
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
         }
+    } else {
+        next()
     }
-    next()
 })
 
 new Vue({
