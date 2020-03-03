@@ -10,30 +10,36 @@
     <p>
       <van-button type="danger" @click="goToChangePwd()">go to changePwd</van-button>
     </p>
+    <van-button type="default" :loading="false" @click="goToLogin">
+      去登陆
+    </van-button>
   </div>
 </template>
 
 <script>
-import { getAreas, getOpenid } from "@/api/test";
+// import { getAreas, getOpenid } from "@/api/test";
 export default {
   name: "index",
   created() {
     this.test();
   },
   methods: {
-    goToChangePwd: function() {
+    goToChangePwd() {
       this.$router.push({ name: "changePwd" });
     },
+    goToLogin(){
+      this.$router.push({name:'login'})
+    },
     test() {
-      let params = {
-        ws: "333333"
-      };
-      getAreas(params).then(res => {
-        console.log(res);
-      });
-      getOpenid(params).then(res => {
-        console.log(res);
-      });
+      // let params = {
+      //   ws: "333333"
+      // };
+      // getAreas(params).then(res => {
+      //   console.log(res);
+      // });
+      // getOpenid(params).then(res => {
+      //   console.log(res);
+      // });
     }
   }
 };

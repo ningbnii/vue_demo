@@ -14,6 +14,11 @@ export default new Router({
             component: Pages.index
         },
         {
+            path: '/login',
+            name: 'login',
+            component: Pages.login
+        },
+        {
             path: '/orderDetail/:orderNo',
             name: 'orderDetail',
             component: Pages.orderDetail
@@ -28,6 +33,7 @@ export default new Router({
             children: [
                 {
                     path:'/user/profile',
+                    name:'userProfile',
                     component: Pages.profile
                 },
                 {
