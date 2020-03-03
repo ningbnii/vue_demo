@@ -8,10 +8,24 @@ Vue.config.productionTip = false;
 Vue.use(Button);
 
 router.beforeEach((to, from, next) => {
-    console.log(to.matched.some(record => record.meta.requiresAuth))
+    if (to.meta.title) {
+        document.title = to.meta.title;    //在路由里面写入的meta里面的title字段
+    }
     if (to.matched.length > 0 && to.matched.some(record => record.meta.requiresAuth)) {
         if (store.state.userToken) {
-            next()
+            // next()
+            if (Object.keys(from.query).length === 0) {
+                next()
+            } else {
+                let redirect = from.query.redirect
+                if (redirect === to.path) {
+                    next()
+                } else {
+                    next({
+                        path: redirect
+                    })
+                }
+            }
         } else {
             next({
                 path: '/login',
