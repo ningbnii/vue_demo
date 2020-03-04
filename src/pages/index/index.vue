@@ -17,11 +17,13 @@
 </template>
 
 <script>
-// import { getAreas, getOpenid } from "@/api/test";
+import { getAreas, getOpenid } from "@/api/test";
+import {getUserInfo} from "../../api/user";
 export default {
   name: "index",
   created() {
-    this.test();
+    // this.test();
+    this.getUserInfo()
   },
   methods: {
     goToChangePwd() {
@@ -31,15 +33,19 @@ export default {
       this.$router.push({name:'login'})
     },
     test() {
-      // let params = {
-      //   ws: "333333"
-      // };
-      // getAreas(params).then(res => {
-      //   console.log(res);
-      // });
-      // getOpenid(params).then(res => {
-      //   console.log(res);
-      // });
+      let params = {
+        ws: "333333"
+      };
+      getAreas(params).then(res => {
+        console.log(res);
+      });
+      getOpenid(params).then(res => {
+        console.log(res);
+      });
+    },
+    getUserInfo(){
+      let userInfo = getUserInfo();
+      console.log(userInfo)
     }
   }
 };

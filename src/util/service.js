@@ -9,7 +9,7 @@ Vue.use(Toast);
 
 const debug = process.env.NODE_ENV !== 'production'
 
-export const Service = axios.create({
+const Service = axios.create({
     timeout: TIME_OUT_MAX, // 请求超时时间
     baseURL: debug ? local : host,
     headers: {
@@ -43,3 +43,5 @@ Service.interceptors.response.use(res => {
     Toast.fail('网络错误' + msg);
     return Promise.reject(error)
 })
+
+export default Service
