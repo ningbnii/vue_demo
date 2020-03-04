@@ -1,11 +1,8 @@
-import Vue from 'vue'
 import axios from 'axios'
 import { Toast } from 'vant';
 import { TIME_OUT_MAX, local, host } from '@/config/config'
 import qs from 'qs'
 let loadingInstance = null
-
-Vue.use(Toast);
 
 const debug = process.env.NODE_ENV !== 'production'
 

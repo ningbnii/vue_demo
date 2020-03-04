@@ -2,10 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/index'
-import {Button} from 'vant';
+import { Button, Toast } from 'vant';
 
 Vue.config.productionTip = false;
-Vue.use(Button);
+Vue.use(Button, Toast);
 
 router.beforeEach((to, from, next) => {
     if (to.meta.title) {
@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
         } else {
             next({
                 path: '/login',
-                query: {redirect: to.fullPath}
+                query: { redirect: to.fullPath }
             })
         }
     } else {
