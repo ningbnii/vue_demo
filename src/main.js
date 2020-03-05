@@ -18,7 +18,7 @@ router.beforeEach((to, from, next) => {
 	if (to.matched.length > 0 && to.matched.some(record => record.meta.requiresAuth)) {
 		if (store.state.userToken) {
 			// next()
-			if (Object.keys(from.query).length === 0) {
+			if (!Object.keys(from.query).redirect) {
 				next()
 			} else {
 				let redirect = from.query.redirect
