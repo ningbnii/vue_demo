@@ -7893,6 +7893,11 @@ vue-loader@^15.8.3:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-page-stack@^1.4.1:
+  version "1.4.1"
+  resolved "http://r.cnpmjs.org/vue-page-stack/download/vue-page-stack-1.4.1.tgz#b6377f00e461bcf2099c2be410b736284b115e8a"
+  integrity sha1-tjd/AORhvPIJnCvkELc2KEsRXoo=
+
 vue-router@^3.1.6:
   version "3.1.6"
   resolved "http://r.cnpmjs.org/vue-router/download/vue-router-3.1.6.tgz#45f5a3a3843e31702c061dd829393554e4328f89"

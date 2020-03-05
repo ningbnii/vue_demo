@@ -25,6 +25,16 @@ export default new Router({
             component: Pages.login
         },
         {
+            path: '/produce/list',
+            name: 'produceList',
+            component: Pages.produceList
+        },
+        {
+            path: '/produce/detail/:id',
+            name: 'produceDetail',
+            component: Pages.produceDetail
+        },
+        {
             path: '/orderDetail/:orderNo',
             name: 'orderDetail',
             component: Pages.orderDetail
