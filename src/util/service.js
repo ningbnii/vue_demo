@@ -23,8 +23,8 @@ Service.interceptors.request.use(
 		// 	forbidClick: true
 		// });
         // 请求头添加token
-        if (store.state.UserToken) {
-            config.headers.Authorization = store.state.UserToken
+        if (store.state.userToken) {
+            config.headers.Authorization = store.state.userToken
         }
 		if (config.method == 'post') {
 			config.data = qs.stringify(config.data)
