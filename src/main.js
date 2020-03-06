@@ -2,14 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router/router'
 import store from './store/index'
-import {Button, Toast, List,Cell} from 'vant';
+import {Button, Toast, List, Cell} from 'vant';
 import VuePageStack from 'vue-page-stack'
 
 Vue.config.productionTip = false;
 Vue.use(Button, Toast);
 Vue.use(List);
 Vue.use(Cell);
-Vue.use(VuePageStack,{router})
+Vue.use(VuePageStack, {router})
 
 router.beforeEach((to, from, next) => {
 	if (to.meta.title) {

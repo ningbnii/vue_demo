@@ -1,12 +1,8 @@
 <template>
     <div id="app">
-        <transition>
-            <vue-page-stack>
-                <router-view/>
-            </vue-page-stack>
-
-        </transition>
-
+        <vue-page-stack>
+            <router-view />
+        </vue-page-stack>
     </div>
 </template>
 
@@ -14,7 +10,7 @@
 
 	export default {
 		name: 'App',
-		components: {}
+		components: {},
 	}
 </script>
 
@@ -27,4 +23,5 @@
         color: #2c3e50;
         margin-top: 60px;
     }
+
 </style>
