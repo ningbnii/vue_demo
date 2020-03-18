@@ -25,6 +25,11 @@ export default new Router({
             component: Pages.login
         },
         {
+            path: '/lufy',
+            name: 'lufy',
+            component: Pages.lufy
+        },
+        {
             path: '/produce/list',
             name: 'produceList',
             component: Pages.produceList

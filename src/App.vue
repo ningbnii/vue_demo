@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <vue-page-stack>
-            <router-view />
+            <router-view/>
         </vue-page-stack>
     </div>
 </template>
@@ -19,9 +19,14 @@
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+        width: 100vw;
+        height: 100vh;
+    }
+    canvas{
+        width: 100vw;
+        height: 100vh;
+        flex: 1;
+        position: absolute;
     }
 
 </style>

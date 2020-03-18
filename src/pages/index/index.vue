@@ -11,6 +11,9 @@
             <router-link to="/produce/list">列表</router-link>
         </p>
         <p>
+            <router-link to="/lufy">lufy</router-link>
+        </p>
+        <p>
             <van-button type="danger" @click="goToChangePwd()">go to changePwd</van-button>
         </p>
         <van-button type="default" :loading="false" @click="goToLogin">去登陆</van-button>
