@@ -5,7 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 // const BASE_URL = process.env.NODE_ENV === 'production' ? '/shengchan' : '/' //食品网生产
 module.exports = {
     // 基本路径（相对于服务器根目录，静态资源的相对路径）,根据环境不同进行切换
-    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/dist/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     // 打包时，不要map文件
     productionSourceMap: false,
     // 输入文件目录
@@ -16,11 +16,14 @@ module.exports = {
     assetsDir: 'static',
     
     configureWebpack:{
+        externals:{
+            'vue':'Vue',
+        },
         plugins:[
             // gzip 压缩配置
             new CompressionPlugin({
                 test: /\.js$|\.html$|\.css$/, // 匹配文件名
-                threshold: 10240, // 对超过10kb的数据进行压缩
+                threshold: 1024, // 对超过10kb的数据进行压缩
                 deleteOriginalAssets: false, // 是否删除源文件
             })
         ]
