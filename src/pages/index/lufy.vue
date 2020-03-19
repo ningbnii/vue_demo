@@ -18,6 +18,7 @@
         },
         mounted() {
 			let s = this;
+			var backgroundLayer;
 			LInit(20,'myCanvas',s.w,s.h,function () {
 				setTimeout(function () {
 					main()
@@ -25,15 +26,22 @@
 			});
 
 			function main() {
+				let s = this;
 				LGlobal.preventDefault = false;
-				var ball = new LSprite();
-				addChild(ball);
-				ball.graphics.drawArc(0, '', [0, 0, 20, 0, 2 * Math.PI], true, "#ff0000");
-
-				ball.addEventListener(LEvent.ENTER_FRAME,function () {
-					ball.x +=10;
-				})
+				initBackgroundLayer();
+				var ball = new Ball(20);
+				backgroundLayer.addChild(ball);
+                backgroundLayer.addEventListener(LEvent.ENTER_FRAME,function () {
+                	var tempx = ball.x += 10;
+	                ball.setX(tempx);
+                })
 			}
+
+	        function initBackgroundLayer(){
+		        let s = this;
+                backgroundLayer = new LSprite();
+		        addChild(backgroundLayer);
+	        }
 
         },
 		methods:{

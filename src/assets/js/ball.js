@@ -8,7 +8,4 @@ export default class Ball {
 	setX(x){
 		this.sprite.x = x;
 	}
-	setY(y){
-		this.sprite.y = y;
-	}
 }

@@ -1,13 +1,28 @@
+// const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
+// const webpack = require('webpack');
+
 // const BASE_URL = process.env.NODE_ENV === 'production' ? '/shengchan' : '/' //食品网生产
 module.exports = {
-    // 设置生产环境是否加载webpack文件
-    // publicPath: BASE_URL
+    // 基本路径（相对于服务器根目录，静态资源的相对路径）,根据环境不同进行切换
+    publicPath: process.env.NODE_ENV === 'production' ? '/' : '/dist/',
+    // 打包时，不要map文件
     productionSourceMap: false,
-
+    // 输入文件目录
+    outputDir: 'dist',
+    // 是否在保存的时候检查
     lintOnSave: false,
+    // 放置生成的静态资源的目录（js，css，img，font），相对于outputDir
+    assetsDir: 'static',
+    
     configureWebpack:{
         plugins:[
-            
+            // gzip 压缩配置
+            new CompressionPlugin({
+                test: /\.js$|\.html$|\.css$/, // 匹配文件名
+                threshold: 10240, // 对超过10kb的数据进行压缩
+                deleteOriginalAssets: false, // 是否删除源文件
+            })
         ]
     }
 }
