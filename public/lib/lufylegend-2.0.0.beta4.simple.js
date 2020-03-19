@@ -584,16 +584,22 @@ var LGlobal = (function() {
     LGlobal.setCanvas = function(id, w, h) {
         LGlobal.ll_createCanvas(id, w, h);
         LGlobal.ll_createStage();
+        
         if (LGlobal.displayState == LStage.FULL_SCREEN) {
             LGlobal.resize();
         } else if (typeof LGlobal.displayState == "number") {
             LGlobal.resize(LGlobal.canvasObj.width * LGlobal.displayState, LGlobal.canvasObj.height * LGlobal.displayState);
         }
+        
         if (LGlobal.canTouch) {
+            
             LGlobal.ll_clicks = 0;
             LGlobal.ll_prev_clickTime = 0;
+            
             LEvent.addEventListener(LGlobal.canvasObj, LMouseEvent.TOUCH_START, LGlobal.ll_touchStart);
+            
             LEvent.addEventListener(document, LMouseEvent.TOUCH_END, LGlobal.ll_touchEnd);
+            
             LEvent.addEventListener(LGlobal.canvasObj, LMouseEvent.TOUCH_MOVE, LGlobal.ll_touchMove);
         } else {
             LEvent.addEventListener(LGlobal.canvasObj, LMouseEvent.DOUBLE_CLICK, LGlobal.ll_mouseDbclick);
@@ -602,6 +608,7 @@ var LGlobal = (function() {
             LEvent.addEventListener(LGlobal.canvasObj, LMouseEvent.MOUSE_UP, LGlobal.ll_mouseUp);
             LEvent.addEventListener(LGlobal.canvasObj, LMouseEvent.MOUSE_OUT, LGlobal.ll_mouseOut);
         }
+        
     };
     LGlobal.ll_createCanvas = function(id, w, h) {
         LGlobal.id = id;
@@ -776,6 +783,7 @@ var LGlobal = (function() {
     LGlobal.ll_touchEnd = function(event) {
         var e, eve, k, i, l, h;
         LGlobal.IS_MOUSE_DOWN = false;
+        
         if (LMultitouch.inputMode == LMultitouchInputMode.TOUCH_POINT) {
             for (k in LMultitouch.touchs) {
                 e = LMultitouch.touchs[k];
@@ -793,11 +801,14 @@ var LGlobal = (function() {
                 }
             }
         }
+        
         if (!eve) {
             eve = { offsetX: LGlobal.offsetX, offsetY: LGlobal.offsetY };
             LGlobal.mouseEvent(eve, LMouseEvent.MOUSE_UP);
         }
+        
         LGlobal.touchHandler(event);
+        
         LGlobal.buttonStatusEvent = null;
         if (LGlobal.mouseJoint_end) {
             LGlobal.mouseJoint_end();
@@ -919,15 +930,18 @@ var LGlobal = (function() {
         LGlobal.IS_MOUSE_DOWN = false;
     };
     LGlobal.touchHandler = function(e) {
+        
         if (LGlobal.stopPropagation) {
             e.stopPropagation();
             if (e.stopImmediatePropagation) {
                 e.stopImmediatePropagation();
             }
         }
+        
         if (LGlobal.preventDefault) {
             e.preventDefault();
         }
+        
         return e;
     };
     LGlobal.mouseEvent = function(e, t) {
@@ -1696,6 +1710,7 @@ function init(s, c, w, h, f, t) {
     cancelAnimationFrame(LGlobal.requestId);
 
   }
+  
   LGlobal.speed = s;
   var _f = function () {
     if (LGlobal.canTouch && LGlobal.aspectRatio == LANDSCAPE && window.innerWidth < window.innerHeight) {
@@ -1707,6 +1722,7 @@ function init(s, c, w, h, f, t) {
     }
     LGlobal.startTimer = (new Date()).getTime();
   };
+  
   var loop;
   if (typeof s == "function") {
     loop = function () {
@@ -1725,6 +1741,7 @@ function init(s, c, w, h, f, t) {
           window.setTimeout(callback, 1000 / 60);
         };
     })();
+    
     LGlobal._requestAFBaseTime = (new Date()).getTime();
     loop = function () {
       var now = (new Date()).getTime();
@@ -1740,7 +1757,9 @@ function init(s, c, w, h, f, t) {
       LGlobal.requestId = _requestAF(loop, s);
     };
   }
+    
     LGlobal.setCanvas(c, w, h);
+    
   if (document.readyState === "complete") {
     LGlobal.setCanvas(c, w, h);
     _f();
