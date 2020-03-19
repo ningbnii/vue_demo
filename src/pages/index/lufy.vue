@@ -20,9 +20,20 @@
 			let s = this;
 			LInit(20,'myCanvas',s.w,s.h,function () {
 				setTimeout(function () {
-					s.main()
+					main()
 				},0)
 			});
+
+			function main() {
+				LGlobal.preventDefault = false;
+				var ball = new LSprite();
+				addChild(ball);
+				ball.graphics.drawArc(0, '', [0, 0, 20, 0, 2 * Math.PI], true, "#ff0000");
+
+				ball.addEventListener(LEvent.ENTER_FRAME,function () {
+					ball.x +=10;
+				})
+			}
 
         },
 		methods:{
@@ -30,10 +41,13 @@
 				let s = this;
 				LGlobal.preventDefault = false;
 				s.initBackgroundLayer();
-                s.ball = new Ball(20);
-				s.backgroundLayer.addChild(s.ball);
-				s.ball.x = 100;
-				s.ball.y = 100;
+                // s.ball = new Ball(20);
+				// s.backgroundLayer.addChild(s.ball);
+				// s.ball.setX(s.w/2);
+				// s.ball.setY(s.h/2);
+                s.ball = new LSprite();
+                s.backgroundLayer.addChild(s.ball);
+                s.ball.graphics.drawArc(0, '', [0, 0, 20, 0, 2 * Math.PI], true, "#ff0000");
 				// s.backgroundLayer.addEventListener(LEvent.ENTER_FRAME,s.onframe);
             },
             initBackgroundLayer(){
@@ -43,6 +57,7 @@
             },
             onframe(){
 				let s = this;
+				s.ball.x += 10;
             }
         },
         destroyed() {
