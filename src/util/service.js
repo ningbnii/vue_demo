@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '@/store/index.js'
-import {Toast} from 'vant';
+// import {Toast} from 'vant';
 import {TIME_OUT_MAX, local, host} from '@/config/config'
 import qs from 'qs'
 
@@ -42,7 +42,7 @@ Service.interceptors.response.use(
 		if (res.data.status == 200) {
 			return res.data.data
 		} else {
-			Toast(res.data.error)
+			vant.Toast(res.data.error)
 		}
 	},
 	error => {
@@ -54,7 +54,7 @@ Service.interceptors.response.use(
 					break
 				case 401:
 					error.message = '授权失败，请重新登录'
-					Toast.fail(error.message)
+					vant.Toast.fail(error.message)
 					store.commit('LOGIN_OUT')
 					setTimeout(() => {
 						window.location.reload()
@@ -74,7 +74,7 @@ Service.interceptors.response.use(
 		} else {
 			error.message = '连接服务器失败'
 		}
-		Toast.fail(error.message);
+		vant.Toast.fail(error.message);
 		return Promise.reject(error)
 	})
 
