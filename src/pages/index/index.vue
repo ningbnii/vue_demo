@@ -21,7 +21,6 @@
 </template>
 
 <script>
-	import {getAreas, getOpenid} from "@/api/test";
 	import {getUserInfo} from "../../api/user";
 
 	export default {
@@ -52,9 +51,9 @@
 				// getUserInfo().then(function (res) {
 				//   console.log(res)
 				// })
-				getUserInfo({userId: 123}).then(function (res) {
-					console.log(res)
-				})
+				// getUserInfo({userId: 123}).then(function (res) {
+				// 	console.log(res)
+				// })
 
 			}
 		}
